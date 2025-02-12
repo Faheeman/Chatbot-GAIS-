@@ -1,0 +1,568 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap');
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(230, 62%, 56%);
+  --title-color: hsl(0, 0%, 100%);
+  --text-color: hsl(0, 0%, 100%);
+  --border-color: hsl(230, 50%, 90%);
+  --white-color: hsl(0, 0%, 100%);
+  --red-color: #e20a17;
+  --green-color: #005f3b; /* Flag green background */
+  --body-color: linear-gradient(to right, var(--green-color), var(--red-color)); /* Gradient theme */
+  --container-color: hsl(230, 100%, 97%);
+  --nav-bg-color: #004d2d; /* Dark green navbar */
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Tiro Bangla", serif;
+  --biggest-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--body-font);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background: var(--body-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color .4s;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--white-color);
+  font-family: var(--second-font);
+  font-weight: var(--font-medium);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== THEME ===============*/
+/*========== Variables Dark theme ==========*/
+
+
+/*========== 
+	Color changes in some parts of 
+	the website, in dark theme
+==========*/
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1220px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 1rem;
+}
+
+.section__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  font-family: var(--second-font);
+  margin-bottom: 2rem;
+}
+
+
+/*=============== HEADER & NAV ===============*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-bg-color);
+    z-index: var(--z-fixed);
+    transition: box-shadow .4s, background-color .4s;
+}
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.3rem; /* Reduce spacing between image and text */
+    color: var(--white-color);
+    font-size: 1.25rem; /* Adjust text size */
+    font-weight: var(--font-medium);
+}
+
+.nav__logo img {
+    height: 50px;  /* Adjust image size to fit well with text */
+    margin-right: 5px; /* Reduce margin between image and text */
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav__link {
+    color: var(--white-color);
+    transition: color .4s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav__link span {
+    display: inline;
+}
+
+.nav__link i {
+    font-size: 1.25rem;
+}
+
+/* Updated hover effect */
+:is(.nav__search, .nav__login, .nav__toggle, .nav__link):hover {
+    color: #fff;
+    background-color: var(--red-color);
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav__actions {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.nav__actions i {
+    font-size: 1.25rem;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: color .4s;
+}
+
+.nav__actions i:hover {
+    color: var(--red-color);
+}
+
+/* Add shadow header */
+.shadow-header {
+    box-shadow: 0 2px 16px hsla(0, 0%, 0%, .1);
+}
+
+/* Navigation visibility rules */
+.nav__link i {
+    display: inline; /* Show icons by default */
+}
+
+.nav__link span {
+    display: none; /* Hide text by default */
+}
+
+/* Show text only on larger screens and hide icons */
+@media screen and (min-width: 1150px) {
+    .nav__link i {
+        display: none !important;
+    }
+
+    .nav__link span {
+        display: inline !important;
+        font-size: 1rem;
+    }
+
+    .nav__list {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+/* Ensure only icons appear on smaller screens */
+@media screen and (max-width: 1149px) {
+    .nav__menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--nav-bg-color);
+        box-shadow: 0 -8px 32px hsla(0, 0%, 0%, .1);
+        padding: 1.25rem 4rem;
+        transition: background-color .4s;
+    }
+
+    .nav__list {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .nav__link span {
+        display: none !important;
+    }
+}
+
+/*=============== SEARCH ===============*/
+.search {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially hide the search section */
+    width: 40%;  /* Set the width to make it appear from right */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    z-index: var(--z-fixed);
+    padding: 6rem 2rem;
+    transition: right 0.4s ease-in-out; /* Smooth sliding effect */
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Show search bar when active */
+.search.show-search {
+    right: 0; /* Slide in from right */
+}
+
+/* Styling the search input box */
+.search__form {
+    display: flex;
+    align-items: center;
+    background-color: var(--container-color);
+    border: 2px solid var(--border-color);
+    padding-inline: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search__icon {
+    font-size: 1.5rem;
+    color: black;
+    margin-right: 0.5rem;
+}
+
+.search__input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: var(--container-color);
+    color: var(--text-color);
+    border: none;
+    outline: none;
+}
+
+.search__close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.search__close:hover {
+    transform: rotate(90deg); /* Rotate effect on hover */
+}
+
+/* Show search */
+.show-search {
+    top: 0;
+}
+
+/*=============== MAIN ===============*/
+
+.chat__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(to right, #0a5c34, #8b0000);
+    padding: 20px;
+}
+
+/* Header */
+.app-header {
+    margin-bottom: 160px;
+}
+.heading {
+    font-size: 2.5rem;
+    color: var(--white-color);
+    font-weight: bold;
+}
+.sub-heading {
+    font-size: 1.5rem;
+    color: var(--white-color);
+}
+
+/* Initially show the app header */
+.app-header {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide the app header when input has text */
+.prompt-form .prompt-input:not(:placeholder-shown) ~ .app-header {
+    opacity: 0;
+    pointer-events: none; /* Prevents interaction */
+}
+
+
+
+/* Prompt Container */
+.prompt-container {
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+    background: rgba(0, 51, 25, 0.2); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Wrapper for Input and Actions */
+.prompt-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Input Form */
+.prompt-form {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    background: white;
+    padding: 12px;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Input Field */
+.prompt-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Action Buttons */
+.prompt-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* General Button Styles */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+/* File Upload Button */
+#add-file-btn {
+    color: var(--green-color);
+}
+
+/* Initially Hide Send Button */
+.prompt-form #send-prompt-btn {
+    color: var(--green-color);
+    display: none;
+}
+
+/* Show Send Button When Input Has Text */
+.prompt-form .prompt-input:not(:placeholder-shown) ~ .prompt-actions #send-prompt-btn {
+    display: inline-block;
+}
+
+
+/* Theme Toggle Button */
+#theme-toggle-btn {
+    color: #ffc107;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+}
+
+/* Delete Chat Button */
+#delete-chats-btn {
+    color: #ff2e2e;
+}
+
+/* Hover Effects */
+button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+#add-file-btn:hover {
+    color: var(--red-color);
+}
+
+#send-prompt-btn:hover {
+    color: var(--red-color);
+    transform: scale(1.2);
+}
+
+#theme-toggle-btn:hover {
+    color: #ffea00; /* Lighter yellow */
+    transform: rotate(180deg);
+}
+
+#delete-chats-btn:hover {
+    color: #ff4444;
+    transform: scale(1.2);
+}
+
+/* Button Click Effect */
+button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .prompt-container {
+        width: 100%;
+    }
+
+    .prompt-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .prompt-form {
+        width: 100%;
+    }
+
+    .prompt-actions {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*=============== FOOTER ===============*/
+.footer {
+    padding-block: 2rem 2rem; /* Reduced padding for a more compact layout */
+    background-color: var(--nav-bg-color); /* Footer background matching navbar */
+    color: var(--white-color);
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer__container {
+    max-width: 1220px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem; /* Reduced gap between sections */
+    row-gap: 2rem; /* Reduced row gap */
+    justify-items: center;
+}
+
+.footer__copy {
+    font-size: var(--smaller-font-size);
+    margin-top: 20rem; /* Reduced margin above copyright text */
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .footer__container {
+        text-align: center;
+    }
+
+    .footer__data {
+        grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    }
+}
